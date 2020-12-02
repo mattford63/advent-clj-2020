@@ -51,8 +51,6 @@
                       (recur (rest s) t (conj state f))))))]
      (lazy-seq (step s t state)))))
 
-(take 20 (lazy-expense' (range) 2020))
-
 
 ;; via reduce and a complex accumulator to manage state and result
 (defn reduce-expense [s t]
@@ -67,7 +65,7 @@
                :state #{}}
               s))
 
-;; use a shortcircuit
+;; use a short-circuit
 (defn reduce-expense-sc [s t]
   (reduce (fn [acc x]
                 (let [{:keys [result state]} acc
@@ -80,7 +78,7 @@
                :state #{}}
               s))
 
-;; test
+;; Run
 (expense input 2020)
 (reduce-expense input 2020)
 (reduce-expense-sc (range) 2020) ;; has a short-circuit - but only 1 result
